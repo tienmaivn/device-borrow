@@ -39,7 +39,14 @@
 			<td>{{ device.memorized ? "Available" : "Using" }}</td>
 
 			<td class="text-center">
-				<button class="btn btn-sm bg-success">Borrow</button>
+				<button
+					class="btn btn-sm bg-success"
+					(click)="device.memorized = !device.memorized"
+					[class.bg-success]= "device.memorized"
+					[class.bg-warning]= "!device.memorized"
+				>
+					{{ device.memorized ? 'Borrow' : 'Return'}}
+				</button>
 			</td>
 
 			<td class="text-center"><button class="btn btn-danger btn-sm" (click)="deviceRemove(device.id)">X</button></td>
