@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DevListComponent implements OnInit {
 
 	// datas list
-	arrDevices = [
+	public arrDevices = [
 		{ id: 1, name: 'iPhone X', osv: 'IOS 11.2', manu: 'Apple Inc', memorized: true },
 		{ id: 2, name: 'iPhone 7', osv: 'IOS 11.2', manu: 'Apple Inc', memorized: false },
 		{ id: 3, name: 'Galaxy S9', osv: 'Android 7.2', manu: 'Samsung Inc', memorized: true },
@@ -22,4 +22,14 @@ export class DevListComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	// filter status
+	public filterStatus : string = 'view_all';
+	
+	// check for filter
+	getFilterStatus(memorized: boolean) {
+		const viewAll = this.filterStatus==='view_all';
+		const forViewBorrow = this.filterStatus === 'devAvailable' && memorized;
+		const forViewReturn = this.filterStatus === 'devUsing' && !memorized;
+		return viewAll || forViewBorrow || forViewReturn
+	};
 }
