@@ -1,0 +1,35 @@
+	<table class="table table-bordered table-hover table-sm mt-1">
+		<thead>
+			<tr class="table-info">
+				<th>Device Name</th>
+				<th>OS Version</th>
+				<th>Manufacturer</th>
+				<th>Status</th>
+				<th class="text-center">Borrow - Return</th>
+				<th class="text-center w-10">Remove</th>
+			</tr>
+		</thead>
+		<tbody *ngFor="let device of arrDevices">
+			<tr [class.text-success]="device.memorized" [class.text-warning]="!device.memorized">
+				<td>
+					{{ device.name }}
+				</td>
+
+				<td>
+					{{ device.osv }}
+				</td>
+
+				<td>
+					{{ device.manu }}
+				</td>
+
+				<td>{{ device.memorized ? "Available" : "Using" }}</td>
+
+				<td class="text-center">
+					<button class="btn btn-sm bg-success">Borrow</button>
+				</td>
+
+				<td class="text-center"><button class="btn btn-danger btn-sm">X</button></td>
+			</tr>
+		</tbody>
+	</table>
