@@ -22,6 +22,12 @@ export class DevListComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	// device remove
+	deviceRemove(id: number){
+		const index = this.arrDevices.findIndex(device => device.id === id);
+		this.arrDevices.splice(index, 1);
+	};
+
 	// filter status
 	public filterStatus : string = 'view_all';
 	
