@@ -1,55 +1,70 @@
-<div class="form-inline">
-	<div class="form-group">
-		<label>Filter</label>
+<div *ngIf="showFormAdd">
+	<div class="row">
+		<div class="col-md-2"><input type="text" class="form-control" placeholder="Enter device name" [(ngModel)]="newDv"></div>
+		<div class="col-md-2"><input type="text" class="form-control" placeholder="Enter OS version" [(ngModel)]="newOsv"></div>
+		<div class="col-md-2"><input type="text" class="form-control" placeholder="Enter manufacturer" [(ngModel)]="newManu"></div>
+		<div class="col-auto"><button class="btn" (click)="showFormAdd=false" title="Hide Form">X</button></div> 
 	</div>
-	<div class="form-group mx-sm-3">
-		<select class="form-control form-control-sm custom-select" [(ngModel)]="filterStatus">
-			<option value="view_all">View All</option>
-			<option value="devAvailable">View Available</option>
-			<option value="devUsing">View Using</option>
-		</select>
+	<div class="row">
+		<div class="col-auto"><button class="btn btn-primary mt-1" (click)="addDevice()">Add device</button></div>
 	</div>
 </div>
+<button class="btn btn-primary" (click)="showFormAdd=true" *ngIf="!showFormAdd">Add device</button>
 
-<table class="table table-bordered table-hover table-sm mt-1">
-	<thead>
-		<tr class="table-info">
-			<th>Device Name</th>
-			<th>OS Version</th>
-			<th>Manufacturer</th>
-			<th>Status</th>
-			<th class="text-center">Borrow - Return</th>
-			<th class="text-center w-10">Remove</th>
-		</tr>
-	</thead>
-	<tbody *ngFor="let device of arrDevices">
-		<tr [class.text-success]="device.memorized" [class.text-warning]="!device.memorized" *ngIf="getFilterStatus(device.memorized)">
-			<td>
-				{{ device.name }}
-			</td>
+<div class="mt-3">
+	<div class="form-inline">
+		<div class="form-group">
+			<label>Filter</label>
+		</div>
+		<div class="form-group mx-sm-3">
+			<select class="form-control form-control-sm custom-select" [(ngModel)]="filterStatus">
+				<option value="view_all">View All</option>
+				<option value="devAvailable">View Available</option>
+				<option value="devUsing">View Using</option>
+			</select>
+		</div>
+	</div>
 
-			<td>
-				{{ device.osv }}
-			</td>
+	<table class="table table-bordered table-hover table-sm mt-1">
+		<thead>
+			<tr class="table-info">
+				<th>Device Name</th>
+				<th>OS Version</th>
+				<th>Manufacturer</th>
+				<th>Status</th>
+				<th class="text-center">Borrow - Return</th>
+				<th class="text-center w-10">Remove</th>
+			</tr>
+		</thead>
+		<tbody *ngFor="let device of arrDevices">
+			<tr [class.text-success]="device.memorized" [class.text-warning]="!device.memorized" *ngIf="getFilterStatus(device.memorized)">
+				<td>
+					{{ device.name }}
+				</td>
 
-			<td>
-				{{ device.manu }}
-			</td>
+				<td>
+					{{ device.osv }}
+				</td>
 
-			<td>{{ device.memorized ? "Available" : "Using" }}</td>
+				<td>
+					{{ device.manu }}
+				</td>
 
-			<td class="text-center">
-				<button
-					class="btn btn-sm bg-success"
-					(click)="device.memorized = !device.memorized"
-					[class.bg-success]= "device.memorized"
-					[class.bg-warning]= "!device.memorized"
-				>
-					{{ device.memorized ? 'Borrow' : 'Return'}}
-				</button>
-			</td>
+				<td>{{ device.memorized ? "Available" : "Using" }}</td>
 
-			<td class="text-center"><button class="btn btn-danger btn-sm" (click)="deviceRemove(device.id)">X</button></td>
-		</tr>
-	</tbody>
-</table>
+				<td class="text-center">
+					<button
+						class="btn btn-sm bg-success"
+						(click)="device.memorized = !device.memorized"
+						[class.bg-success]= "device.memorized"
+						[class.bg-warning]= "!device.memorized"
+					>
+						{{ device.memorized ? 'Borrow' : 'Return'}}
+					</button>
+				</td>
+
+				<td class="text-center"><button class="btn btn-danger btn-sm" (click)="deviceRemove(device.id)">X</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -22,6 +22,31 @@ export class DevListComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	// For show hide form
+	public showFormAdd : boolean = false;
+
+	// for add new device
+	public newDv : string = "";
+	public newOsv : string = "";
+	public newManu : string = "";
+
+	// add a device
+	addDevice() {
+		this.arrDevices.unshift ({
+			id: this.arrDevices.length + 1,
+			name: this.newDv,
+			osv: this.newOsv,
+			manu: this.newManu,
+			memorized: true
+		})
+		// restat after added
+		this.newDv ="",
+		this.newOsv = "",
+		this.newManu = "",
+		/* hidden form after added */
+		this.showFormAdd = false
+	};
+
 	// device remove
 	deviceRemove(id: number){
 		const index = this.arrDevices.findIndex(device => device.id === id);
