@@ -1,0 +1,32 @@
+<div *ngIf="device">
+  <h2>{{ device.name }}</h2>
+
+ <table class="table table-bordered table-sm">
+ 	<tr>
+ 		<th class="table-primary w-25">Device</th>
+ 		<td>{{ device.name | uppercase }}</td>
+ 	</tr>
+ 	<tr>
+ 		<th class="table-primary">OS Version</th>
+ 		<td>{{ device.osversion }}</td>
+ 	</tr>
+ 	<tr>
+ 		<th class="table-primary">Display size</th>
+ 		<td>{{ device.size }}</td>
+ 	</tr>
+ 	<tr>
+ 		<th class="table-primary">Manufacturer</th>
+ 		<td>{{ device.manufacturer }}</td>
+ 	</tr>
+ 	<tr>
+ 		<th class="table-primary">Status</th>
+ 		<td>{{ device.memorized ? "Available" : "Using" }}</td>
+ 	</tr>
+ 	<!-- <tr>
+ 		<th class="table-primary"></th>
+ 		<td></td>
+ 	</tr> -->
+ </table>
+
+  <button class="btn btn-sm btn-primary" (click)="goBack()">Back list</button>
+</div>
