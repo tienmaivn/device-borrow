@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Device } from '../device';
 import { DeviceService } from '../device.service';
 
@@ -9,7 +10,7 @@ import { DeviceService } from '../device.service';
 })
 export class DashboardComponent implements OnInit {
   devices: Device[] = [];
-  
+
   constructor(private deviceService: DeviceService) { }
 
   ngOnInit() {

@@ -19,6 +19,6 @@ export class DevicesComponent implements OnInit {
 
   getDevices(): void {
     this.deviceService.getDevices()
-    .subscribe(devices => this.devices = devices);
+      .subscribe(devices => this.devices = devices);
   }
 }

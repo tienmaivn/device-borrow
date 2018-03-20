@@ -17,7 +17,7 @@ export class DeviceDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private deviceService: DeviceService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getDevice();
