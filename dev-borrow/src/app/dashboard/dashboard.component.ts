@@ -19,6 +19,11 @@ export class DashboardComponent implements OnInit {
 
   getDevices(): void {
     this.deviceService.getDevices()
-      .subscribe(devices => this.devices = devices.slice(1, 10));
+      .subscribe(devices => this.devices = devices);
+  }
+
+  delete(device: Device): void {
+    this.devices = this.devices.filter(d => d !== device);
+    this.deviceService.deleteDevice(device).subscribe();
   }
 }

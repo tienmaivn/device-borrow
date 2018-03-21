@@ -1,28 +1,31 @@
 <div *ngIf="device">
-	<h2>{{ device.name }}</h2>
-
+	<hr>
+	<h3>{{ device.name }}</h3>
+	<hr>
 	<table class="table table-bordered table-sm">
 		<tr>
-			<th class="table-primary w-25">Device</th>
+			<th class="table-active w-25">Device</th>
 			<td>{{ device.name | uppercase }}</td>
 		</tr>
 		<tr>
-			<th class="table-primary">OS Version</th>
+			<th class="table-active">OS Version</th>
 			<td>{{ device.osversion }}</td>
 		</tr>
 		<tr>
-			<th class="table-primary">Display size</th>
+			<th class="table-active">Display size</th>
 			<td>{{ device.size }}</td>
 		</tr>
 		<tr>
-			<th class="table-primary">Manufacturer</th>
+			<th class="table-active">Manufacturer</th>
 			<td>{{ device.manufacturer }}</td>
 		</tr>
 		<tr>
-			<th class="table-primary">Status</th>
+			<th class="table-active">Status</th>
 			<td>{{ device.memorized ? "Available" : "Using" }}</td>
 		</tr>
 	</table>
-
-	<button class="btn btn-sm btn-primary" (click)="goBack()">Back</button>
+	<div class="clearfix">
+		<button class="btn btn-sm btn-primary" (click)="goBack()">Back</button>
+		<button class="btn btn-warning btn-sm edit float-right" title="Edit device" (click)="edit(device)">Edit Device</button>
+	</div>
 </div>

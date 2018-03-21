@@ -1,6 +1,11 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { DeviceService } from './device.service';
+
+getDevices(): Observable<dEVICE[]> {
+  return of(DEVICES);
+}
 
 describe('DeviceService', () => {
   beforeEach(() => {

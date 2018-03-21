@@ -1,19 +1,24 @@
 <ul class="list-group mt-3">
-  <li class="list-group-item active">
+  <li class="list-group-item list-group-item-info">
     <strong class="row">
       <span class="col-md-3">Device Name</span>
       <span class="col-md-3">OS Version</span>
       <span class="col-md-3">Manufacturer</span>
-      <span class="col-md-3">Status</span>
+      <span class="col-md-2">Status</span>
+      <span class="col-md-1">Delete</span>
     </strong>
   </li>
   <ng-container *ngFor="let device of devices">
-    <li class="list-group-item" *ngIf="device.memorized">
-      <a routerLink="/detail/{{device.id}}" class="row">
-      <span class="col-md-3">{{ device.name }}</span>
-      <span class="col-md-3">{{ device.osversion }}</span>
-      <span class="col-md-3">{{ device.manufacturer }}</span>
-      <span class="col-md-3">{{ device.memorized ? "Available" : "Using" }}</span>
-  </a></li>
+    <li class="list-group-item clearfix" *ngIf="device.memorized">
+      <div class="row">
+        <a class="col-md-3" routerLink="/detail/{{device.id}}">{{ device.name }}</a>
+        <a class="col-md-3" routerLink="/detail/{{device.id}}">{{ device.osversion }}</a>
+        <a class="col-md-3" routerLink="/detail/{{device.id}}">{{ device.manufacturer }}</a>
+        <a class="col-md-2" routerLink="/detail/{{device.id}}">{{ device.memorized ? "Available" : "Using" }}</a>
+        <span class="col-md-1">
+          <button class="btn btn-danger btn-sm" title="Delete hero" (click)="delete(device)">x</button>
+        </span>
+      </div>
+    </li>
   </ng-container>
 </ul>
