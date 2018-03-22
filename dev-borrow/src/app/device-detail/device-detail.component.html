@@ -1,6 +1,6 @@
 <div *ngIf="device">
 	<hr>
-	<h3>{{ device.name }}</h3>
+	<h3>Device: {{ device.name }}</h3>
 	<hr>
 	<table class="table table-bordered table-sm">
 		<tr>
@@ -25,7 +25,29 @@
 		</tr>
 	</table>
 	<div class="clearfix">
-		<button class="btn btn-sm btn-primary" (click)="goBack()">Back</button>
-		<button class="btn btn-warning btn-sm edit float-right" title="Edit device" (click)="edit(device)">Edit Device</button>
+		<button class="btn btn-sm btn-primary" (click)="goBack()" title="Go back">Back</button>
+		<button class="btn btn-warning btn-sm edit float-right" title="Edit device" (click)="updateDevice=true">Edit Device</button>
+	</div>
+
+	<div *ngIf="updateDevice">
+		<hr>
+		<div class="row">
+			<div class="col-md-2">
+				<input class="form-control form-control-sm" [(ngModel)]="device.name" placeholder="name" required>
+			</div>
+			<div class="col-md-2">
+				<input class="form-control form-control-sm" [(ngModel)]="device.osversion" placeholder="OS version" required>
+			</div>
+			<div class="col-md-2">
+				<input class="form-control form-control-sm" [(ngModel)]="device.manufacturer"  placeholder="Manufacturer" required>
+			</div>
+			<div class="col-md-2">
+				<input class="form-control form-control-sm" [(ngModel)]="device.size" placeholder="size" required>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-sm" title="Cancel update" (click)="updateDevice=!updateDevice">Cancel</button>
+				<button class="btn btn-sm btn-primary btn-sm" title="Update device" (click)="save()">Update</button>
+			</div>
+		</div>
 	</div>
 </div>

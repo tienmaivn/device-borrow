@@ -1,24 +1,81 @@
+<!-- <form (ngSubmit)="onSubmit(formDevice.value)" #formDevice="ngForm">
+  <hr>
+  <div class="row">
+    <div class="col-md-2">
+      <input type="text" class="form-control form-control-sm" name="name" placeholder="Device name" [(ngModel)]="device.name" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control form-control-sm" name="osversion" placeholder="OS version" [(ngModel)]="device.osversion"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control form-control-sm" name="manufacturer" placeholder="Manufacturer" [(ngModel)]="device.manufacturer"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control form-control-sm" name="size" placeholder="Display size" [(ngModel)]="device.size"
+        [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-sm" title="Cancel add">Cancel</button>
+      <button class="btn btn-primary btn-sm">Add device</button>
+    </div>
+  </div>
+</form> -->
+
+<!-- <app-device-search></app-device-search> -->
+
+<form>
+	<hr>
+	<div class="row">
+		<div class="col-md-2">
+			<input type="text" class="form-control form-control-sm" name="name" placeholder="Device name">
+		</div>
+		<div class="col-md-2">
+			<input type="text" class="form-control form-control-sm" name="osversion" placeholder="OS version">
+		</div>
+		<div class="col-md-2">
+			<input type="text" class="form-control form-control-sm" name="manufacturer" placeholder="Manufacturer">
+		</div>
+		<div class="col-md-2">
+			<input type="text" class="form-control form-control-sm" name="size" placeholder="Display size">
+		</div>
+		<div class="col-auto">
+			<button class="btn btn-sm" title="Cancel add">Cancel</button>
+			<button class="btn btn-primary btn-sm" (click)="add(deviceName.value); deviceName.value=''">Add device</button>
+		</div>
+	</div>
+</form>
+
 <ul class="list-group mt-3">
-  <li class="list-group-item list-group-item-info">
-    <strong class="row">
-      <span class="col-md-3">Device Name</span>
-      <span class="col-md-3">OS Version</span>
-      <span class="col-md-3">Manufacturer</span>
-      <span class="col-md-2">Status</span>
-      <span class="col-md-1">Delete</span>
-    </strong>
-  </li>
-  <ng-container *ngFor="let device of devices">
-    <li class="list-group-item clearfix" *ngIf="device.memorized">
-      <div class="row">
-        <a class="col-md-3" routerLink="/detail/{{device.id}}">{{ device.name }}</a>
-        <a class="col-md-3" routerLink="/detail/{{device.id}}">{{ device.osversion }}</a>
-        <a class="col-md-3" routerLink="/detail/{{device.id}}">{{ device.manufacturer }}</a>
-        <a class="col-md-2" routerLink="/detail/{{device.id}}">{{ device.memorized ? "Available" : "Using" }}</a>
-        <span class="col-md-1">
-          <button class="btn btn-danger btn-sm" title="Delete hero" (click)="delete(device)">x</button>
-        </span>
-      </div>
-    </li>
-  </ng-container>
+	<li class="list-group-item list-group-item-info">
+		<strong class="row">
+			<span class="col-md-3">Device Name</span>
+			<span class="col-md-3">OS Version</span>
+			<span class="col-md-3">Manufacturer</span>
+			<span class="col-md-2">Status</span>
+			<span class="col-md-1">Delete</span>
+		</strong>
+	</li>
+	<ng-container *ngFor="let device of devices">
+		<li class="list-group-item clearfix" *ngIf="device.memorized">
+			<div class="row">
+				<span class="col-md-3">
+					<a routerLink="/detail/{{device.id}}">{{ device.name }}</a>
+				</span>
+				<span class="col-md-3">
+					{{ device.osversion }}
+				</span>
+				<span class="col-md-3">
+					{{ device.manufacturer }}
+				</span>
+				<span class="col-md-2">
+					{{ device.memorized ? "Available" : "Using" }}
+				</span>
+				<span class="col-md-1">
+					<button class="btn btn-danger btn-sm" title="Delete device" (click)="delete(device)">x</button>
+				</span>
+			</div>
+		</li>
+	</ng-container>
 </ul>

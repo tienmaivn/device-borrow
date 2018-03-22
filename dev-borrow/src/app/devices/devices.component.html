@@ -1,17 +1,26 @@
-  <ul class="list-group mt-3">
-    <li class="list-group-item active">
-      <strong class="row">
-        <span class="col-md-3">Device Name</span>
-        <span class="col-md-3">OS Version</span>
-        <span class="col-md-3">Manufacturer</span>
-        <span class="col-md-3">Status</span>
-      </strong>
-    </li>
-    <li class="list-group-item" *ngFor="let device of devices">
-      <a routerLink="/detail/{{device.id}}" class="row">
-      <span class="col-md-3">{{ device.name }}</span>
-      <span class="col-md-3">{{ device.osversion }}</span>
-      <span class="col-md-3">{{ device.manufacturer }}</span>
-      <span class="col-md-3">{{ device.memorized ? "Available" : "Using" }}</span>
-  </a></li>
-  </ul>
+<ul class="list-group mt-3">
+	<li class="list-group-item active">
+		<strong class="row">
+			<span class="col-md-3">Device Name</span>
+			<span class="col-md-3">OS Version</span>
+			<span class="col-md-3">Manufacturer</span>
+			<span class="col-md-3">Status</span>
+		</strong>
+	</li>
+	<li class="list-group-item" *ngFor="let device of devices">
+		<div class="row">
+			<div class="col-md-3">
+				<a routerLink="/detail/{{device.id}}">{{ device.name }}</a>
+			</div>
+			<div class="col-md-3">
+				{{ device.osversion }}
+			</div>
+			<div class="col-md-3">
+				{{ device.manufacturer }}
+			</div>
+			<div class="col-md-3">
+				{{ device.memorized ? "Available" : "Using" }}
+			</div>
+		</div>
+	</li>
+</ul>
