@@ -1,0 +1,57 @@
+<hr>
+<div class="row">
+	<div class="col-md-2">
+		<input type="text" class="form-control form-control-sm" name="name" placeholder="Device name" [(ngModel)]="device.name">
+	</div>
+	<div class="col-md-2">
+		<input type="text" class="form-control form-control-sm" name="osversion" placeholder="OS version" [(ngModel)]="device.osversion">
+	</div>
+	<div class="col-md-2">
+		<input type="text" class="form-control form-control-sm" name="manufacturer" placeholder="Manufacturer" [(ngModel)]="device.manufacturer">
+	</div>
+	<div class="col-md-2">
+		<input type="text" class="form-control form-control-sm" name="size" placeholder="Display size" [(ngModel)]="device.size">
+	</div>
+	<div class="col-md-2">
+		<select class="form-control form-control-sm" [(ngModel)]="device.memorized">
+			<option value="true" selected="selected">Available</option>
+			<option value="false">Using</option>
+		</select>
+	</div>
+	<div class="col-auto">
+		<button class="btn btn-primary btn-sm" (click)="add()">Add device</button>
+	</div>
+</div>
+
+<ul class="list-group mt-3">
+	<li class="list-group-item list-group-item-info">
+		<strong class="row">
+			<span class="col-md-3">Device Name</span>
+			<span class="col-md-3">OS Version</span>
+			<span class="col-md-3">Manufacturer</span>
+			<span class="col-md-2">Status</span>
+			<span class="col-md-1 text-center">Delete</span>
+		</strong>
+	</li>
+	<ng-container *ngFor="let device of devices">
+		<li class="list-group-item clearfix" *ngIf="device.memorized">
+			<div class="row">
+				<span class="col-md-3">
+					<a routerLink="/detail/{{device.id}}">{{ device.name }}</a>
+				</span>
+				<span class="col-md-3">
+					{{ device.osversion }}
+				</span>
+				<span class="col-md-3">
+					{{ device.manufacturer }}
+				</span>
+				<span class="col-md-2">
+					Available
+				</span>
+				<span class="col-md-1 text-center">
+					<button class="btn btn-danger btn-sm" title="Delete device" (click)="delete(device)">x</button>
+				</span>
+			</div>
+		</li>
+	</ng-container>
+</ul>
