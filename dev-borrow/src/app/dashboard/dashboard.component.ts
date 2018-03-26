@@ -9,7 +9,7 @@ import { DeviceService } from '../device.service';
 	styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-	device: Device[] = [];
+	device: Device = new Device;
 	devices: Device[] = [];
 
 	constructor(private deviceService: DeviceService) { }
@@ -30,8 +30,11 @@ export class DashboardComponent implements OnInit {
 		this.deviceService.deleteDevice(device).subscribe();
 	}
 
-	add(device: Device) {
-		this.deviceService.addDevice(device as Device)
-			.subscribe(device => { this.devices.push(device) });
+	add() {
+		console.log(this.device);
+		this.device.id = 20;
+		this.deviceService.addDevice(this.device).subscribe(device => {
+			this.devices.push(device)
+		});
 	}
 }
