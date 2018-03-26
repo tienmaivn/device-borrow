@@ -18,7 +18,7 @@
 			<div class="col-md-3">
 				{{ device.manufacturer }}
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3" [class.text-warning]="!device.memorized">
 				{{ device.memorized ? "Available" : "Using" }}
 			</div>
 		</div>

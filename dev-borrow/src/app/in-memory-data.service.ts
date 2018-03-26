@@ -26,7 +26,7 @@ export class InMemoryDataService implements InMemoryDbService {
 			{ id: 21, name: 'Galaxy S9', osversion: 'Android 7.2', size: '375 x 667', manufacturer: 'Samsung Inc', memorized: true },
 			{ id: 22, name: 'iPad pro', osversion: 'IOS 11.2', size: '375 x 667', manufacturer: 'Apple Inc', memorized: true },
 			{ id: 23, name: 'Iphone 7 Plus', osversion: 'IOS 11.2', size: '375 x 667', manufacturer: 'Apple Inc', memorized: false },
-			{ id: 24, name: 'Iphone 8 Plus', osversion: 'IOS 11.2', size: '375 x 667', manufacturer: 'Apple Inc', memorized: true }
+			{ id: 24, name: 'Iphone 8 Plus', osversion: 'IOS 11.2', size: '375 x 667', manufacturer: 'Apple Inc', memorized: true },
 		];
 		return { devices };
 	}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Device } from '../device';
 import { DeviceService } from '../device.service';
@@ -9,6 +9,7 @@ import { DeviceService } from '../device.service';
 	styleUrls: ['./devices.component.css']
 })
 export class DevicesComponent implements OnInit {
+	@Input() device: Device;
 	devices: Device[];
 
 	constructor(private deviceService: DeviceService) { }
@@ -22,4 +23,8 @@ export class DevicesComponent implements OnInit {
 			.subscribe(devices => this.devices = devices);
 	};
 
+	add(): void {
+		this.deviceService.updateDevice(this.device)
+			.subscribe(device => this.device = device);
+	}
 }

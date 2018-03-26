@@ -1,51 +1,27 @@
-<!-- <form (ngSubmit)="onSubmit(formDevice.value)" #formDevice="ngForm">
-  <hr>
-  <div class="row">
-    <div class="col-md-2">
-      <input type="text" class="form-control form-control-sm" name="name" placeholder="Device name" [(ngModel)]="device.name" [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="col-md-2">
-      <input type="text" class="form-control form-control-sm" name="osversion" placeholder="OS version" [(ngModel)]="device.osversion"
-        [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="col-md-2">
-      <input type="text" class="form-control form-control-sm" name="manufacturer" placeholder="Manufacturer" [(ngModel)]="device.manufacturer"
-        [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="col-md-2">
-      <input type="text" class="form-control form-control-sm" name="size" placeholder="Display size" [(ngModel)]="device.size"
-        [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="col-auto">
-      <button class="btn btn-sm" title="Cancel add">Cancel</button>
-      <button class="btn btn-primary btn-sm">Add device</button>
-    </div>
-  </div>
-</form> -->
-
-<!-- <app-device-search></app-device-search> -->
-
-<form>
-	<hr>
-	<div class="row">
-		<div class="col-md-2">
-			<input type="text" class="form-control form-control-sm" name="name" placeholder="Device name">
-		</div>
-		<div class="col-md-2">
-			<input type="text" class="form-control form-control-sm" name="osversion" placeholder="OS version">
-		</div>
-		<div class="col-md-2">
-			<input type="text" class="form-control form-control-sm" name="manufacturer" placeholder="Manufacturer">
-		</div>
-		<div class="col-md-2">
-			<input type="text" class="form-control form-control-sm" name="size" placeholder="Display size">
-		</div>
-		<div class="col-auto">
-			<button class="btn btn-sm" title="Cancel add">Cancel</button>
-			<button class="btn btn-primary btn-sm" (click)="add(deviceName.value); deviceName.value=''">Add device</button>
-		</div>
+<hr>
+<div class="row">
+	<div class="col-md-2">
+		<input type="text" class="form-control form-control-sm" name="name" placeholder="Device name" [(ngModel)]="device.name">
 	</div>
-</form>
+	<div class="col-md-2">
+		<input type="text" class="form-control form-control-sm" name="osversion" placeholder="OS version" [(ngModel)]="device.osversion">
+	</div>
+	<div class="col-md-2">
+		<input type="text" class="form-control form-control-sm" name="manufacturer" placeholder="Manufacturer" [(ngModel)]="device.manufacturer">
+	</div>
+	<div class="col-md-2">
+		<input type="text" class="form-control form-control-sm" name="size" placeholder="Display size" [(ngModel)]="device.size">
+	</div>
+	<div class="col-md-2">
+		<select class="form-control form-control-sm" [(ngModel)]="device.memorized">
+			<option value="true" selected="selected">Available</option>
+			<option value="false">Using</option>
+		</select>
+	</div>
+	<div class="col-auto">
+		<button class="btn btn-primary btn-sm" (click)="add(addDevice)">Add device</button>
+	</div>
+</div>
 
 <ul class="list-group mt-3">
 	<li class="list-group-item list-group-item-info">
@@ -54,7 +30,7 @@
 			<span class="col-md-3">OS Version</span>
 			<span class="col-md-3">Manufacturer</span>
 			<span class="col-md-2">Status</span>
-			<span class="col-md-1">Delete</span>
+			<span class="col-md-1 text-center">Delete</span>
 		</strong>
 	</li>
 	<ng-container *ngFor="let device of devices">
@@ -70,9 +46,9 @@
 					{{ device.manufacturer }}
 				</span>
 				<span class="col-md-2">
-					{{ device.memorized ? "Available" : "Using" }}
+					Available
 				</span>
-				<span class="col-md-1">
+				<span class="col-md-1 text-center">
 					<button class="btn btn-danger btn-sm" title="Delete device" (click)="delete(device)">x</button>
 				</span>
 			</div>
