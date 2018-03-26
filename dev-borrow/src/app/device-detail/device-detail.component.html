@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<th class="table-active">Status</th>
-			<td>{{ device.memorized ? "Available" : "Using" }}</td>
+			<td [class.text-warning]="!memorized">{{ device.memorized ? "Available" : "Using" }}</td>
 		</tr>
 	</table>
 	<div class="clearfix">
